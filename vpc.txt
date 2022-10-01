@@ -1,0 +1,84 @@
+1) go to vpc
+2 givename
+3 Ipv4 cidr 10.0.0.0/16
+4 click create
+
+5 Create internet gateway
+6) give name and click create
+7) right click on gateway and attach to vpc
+
+8) goto subnets
+9) select vpc
+10) give name Public subnet
+11) give IPv4 10.0.1.0/24
+
+
+12) goto subnets
+13) select vpc
+14) give name Private subnet
+15) give IPv4 10.0.2.0/24
+
+16) Route tables
+edit table name to public rt
+
+click create route table
+name Private RT
+
+Select public routes
+click edit routes
+click add routes
+add 0.0.0.0/0
+target internet gateway
+save routes
+
+
+go to subnet associations
+edit subnet associations
+select public subnet
+click save
+
+
+Select private routes
+go to subnet associations
+edit subnet associations
+select private subnet
+click save
+
+
+go to security groups
+inbound rules
+select type: All traffic
+select source MyIP
+copy IP address
+give name MY IP
+save rules
+
+goto Network ACL
+rename my_demo_rt
+click inbound rules
+edit inbound rules
+paste the copied ip into source
+save
+
+
+search ec2
+click instances 
+launch instances
+
+
+edit network settings 
+subnet-public subnet
+autoassign public ip enable
+select existing security group
+select key pair
+launch instances
+
+
+create one more instance
+select private instance
+auto assign public ip enable
+select security group
+launch
+
+copy public Ipv4
+
